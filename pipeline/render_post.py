@@ -65,6 +65,12 @@ h1{font-family:var(--display);font-weight:800;letter-spacing:-.045em;line-height
 .q .by{display:flex;justify-content:space-between;align-items:center}
 .q.plum{background:var(--plum)} .q.emerald{background:var(--emerald)} .q.bone{background:var(--bone);color:var(--ink)}
 .q.bone .serif,.q.bone .dot,.q.bone .eyebrow{color:var(--emerald)}
+.sign .wrap{justify-content:space-between}
+.sign .mid{display:flex;flex-direction:column;gap:30px}
+.sign .n{font-family:var(--serif);font-style:italic;font-size:170px;line-height:.9;color:var(--citron)}
+.sign h1{font-size:88px;line-height:1.02}
+.sign .p{font-size:42px;line-height:1.38;color:var(--bone);opacity:.92;max-width:900px}
+.q.bone.sign .n{color:var(--emerald)} .q.bone.sign .p{color:#2a2f2b;opacity:1}
 .i .wrap{position:absolute;left:84px;right:84px;top:120px;bottom:150px;display:flex;flex-direction:column}
 .i.deep{background:var(--deep)}
 #stat .num{font-family:var(--display);font-weight:800;font-size:380px;letter-spacing:-.06em;line-height:.9;color:var(--citron);margin-top:70px}
@@ -118,10 +124,19 @@ def t_list(f):
     rows = "".join(f'<div class="row"><span class="n">{i+1}</span><span class="t2">{plain(x)}</span></div>' for i, x in enumerate(f.get("items", [])[:3]))
     return f'<section class="t i" id="list"><div class="wrap"><div class="eyebrow">{plain(f.get("eyebrow","Three things"))}</div><h1 data-fit="300">{rich(f.get("headline"))}</h1><div class="rows">{rows}</div></div>{foot(f)}</section>'
 
+def t_sign(color):
+    def fn(f):
+        cls = "t q sign " + color if color != "ink" else "t q sign"
+        tagstyle = ' style="color:#2a2f2b"' if color == "bone" else (' style="color:#fff;opacity:.8"' if color in ("plum","emerald") else "")
+        return f'<section class="{cls}" id="sign"><div class="wrap"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><div class="mid"><div class="n">{plain(f.get("number"))}</div><h1 data-fit="330">{rich(f.get("headline"))}</h1><p class="p">{plain(f.get("text"))}</p></div><div class="by"><span class="mark">{MARK}</span><span class="count"{tagstyle}>{plain(f.get("tag","Swipe →"))}</span></div></div></section>'
+    return fn
+
 TEMPLATES = {
   "cover": (t_cover, 1350), "body": (t_body, 1350),
   "quote-ink": (t_quote("ink"), 1350), "quote-plum": (t_quote("plum"), 1350),
   "quote-emerald": (t_quote("emerald"), 1350), "quote-bone": (t_quote("bone"), 1350),
+  "sign-ink": (t_sign("ink"), 1350), "sign-plum": (t_sign("plum"), 1350),
+  "sign-emerald": (t_sign("emerald"), 1350), "sign-bone": (t_sign("bone"), 1350),
   "quote-card": (t_quote_card, 1350), "announce": (t_announce, 1350), "story": (t_story, 1920),
   "stat": (t_stat, 1350), "define": (t_define, 1350), "myth": (t_myth, 1350), "list": (t_list, 1350),
 }

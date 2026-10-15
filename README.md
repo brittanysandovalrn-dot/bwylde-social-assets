@@ -20,6 +20,7 @@ Rich text: `*word*` becomes the Citron serif italic word. A final `.` or `?` bec
 - `cover`: eyebrow, headline, line, cta, counter
 - `body`: eyebrow, headline, number, title, text, counter
 - `quote-ink`, `quote-plum`, `quote-emerald`, `quote-bone`: eyebrow, headline, tag
+- `sign-ink`, `sign-plum`, `sign-emerald`, `sign-bone`: eyebrow, number, headline, text, tag (numbered "signs" slide: big serif number, bold statement, one supporting sentence)
 - `quote-card`: eyebrow, headline, tag
 - `announce`: eyebrow, headline, text, strip, button
 - `story`: eyebrow, headline, chips (list), text
@@ -30,3 +31,7 @@ Rich text: `*word*` becomes the Citron serif italic word. A final `.` or `?` bec
 
 ## Public image URL
 `https://raw.githubusercontent.com/brittanysandovalrn-dot/bwylde-social-assets/main/posts/<folder>/slide-N.jpg`
+
+## Carousel formats
+- **Quote scroll**: 6 `quote-*` slides, `quote-card` closer, `announce` GoFeral slide.
+- **Signs list**: intro on a `quote-*` slide ("Things that feel like X but are actually signs Y:"), then 4 to 6 `sign-*` slides numbered 1..N, `quote-card` closer, `announce` GoFeral slide.
