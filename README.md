@@ -33,5 +33,7 @@ Rich text: `*word*` becomes the Citron serif italic word. A final `.` or `?` bec
 `https://raw.githubusercontent.com/brittanysandovalrn-dot/bwylde-social-assets/main/posts/<folder>/slide-N.jpg`
 
 ## Carousel formats
-- **Quote scroll**: 6 `quote-*` slides, `quote-card` closer, `announce` GoFeral slide.
-- **Signs list**: intro on a `quote-*` slide ("Things that feel like X but are actually signs Y:"), then 4 to 6 `sign-*` slides numbered 1..N, `quote-card` closer, `announce` GoFeral slide.
+- **Explainer** (wordier, deeper): `cover` opener with an arrow (eyebrow, headline, line, cta "Swipe →", counter), 5 numbered `sign-*` slides that walk one idea step by step (2 to 3 sentences each), `quote-card` closer, `announce` GoFeral slide.
+- **Signs list**: `cover` opener with an arrow ("Things that feel like X but are actually signs Y:"), 5 numbered `sign-*` slides, `quote-card` closer, `announce` GoFeral slide.
+- **Quote scroll** (short): 6 `quote-*` slides, `quote-card` closer, `announce` GoFeral slide.
+- Longer formats always open with the `cover` arrow slide. The `announce` slide is tailored to each post: its headline and text say what GoFeral would do for that post's specific theme (about 25 words, keep it above the strip). Captions use emoji that fit the content, never one default.
