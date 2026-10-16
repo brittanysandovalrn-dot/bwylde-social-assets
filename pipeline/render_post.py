@@ -92,6 +92,23 @@ h1{font-family:var(--display);font-weight:800;letter-spacing:-.045em;line-height
 #list .row:nth-child(3){background:var(--cardplum);border:0}
 #list .n{font-family:var(--display);font-weight:800;font-size:72px;letter-spacing:-.04em;color:var(--citron);width:70px}
 #list .t2{font-family:var(--display);font-weight:700;font-size:42px;letter-spacing:-.03em;line-height:1.15}
+.pat{background:var(--plum)}
+.pat .blob{position:absolute;left:60px;top:70px;width:960px;height:1210px}
+.pat .blob svg{width:100%;height:100%;display:block}
+.pat .in{position:absolute;left:150px;right:150px;top:190px;bottom:190px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:44px}
+.pat h1{font-size:104px;line-height:1.02;letter-spacing:-.04em}
+.pat .sig{font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.04em;opacity:.85}
+.pat .eyebrow{font-size:22px}
+.pat.plum{background-color:var(--plum);background-image:repeating-linear-gradient(135deg,rgba(14,20,17,.55) 0 44px,transparent 44px 88px)}
+.pat.emerald{background-color:var(--emerald);background-image:repeating-radial-gradient(circle at 50% 120%,rgba(2,49,31,.7) 0 36px,transparent 36px 72px)}
+.pat.ink{background-color:var(--ink);background-image:radial-gradient(circle,rgba(4,107,69,.95) 0 17px,transparent 18px);background-size:68px 68px}
+.pat.bone{background-color:var(--bone);background-image:repeating-linear-gradient(45deg,rgba(122,46,82,.85) 0 30px,transparent 30px 90px)}
+.pat.citron{background-color:var(--citron);background-image:repeating-radial-gradient(circle at 0% 50%,rgba(14,20,17,.9) 0 26px,transparent 26px 78px)}
+.pat.plum .blob path{fill:var(--citron)} .pat.plum .in{color:var(--ink)} .pat.plum .serif,.pat.plum .dot,.pat.plum .eyebrow{color:var(--plum)}
+.pat.emerald .blob path{fill:var(--bone)} .pat.emerald .in{color:var(--ink)} .pat.emerald .serif,.pat.emerald .dot,.pat.emerald .eyebrow{color:var(--emerald)}
+.pat.ink .blob path{fill:var(--plum)} .pat.ink .in{color:var(--bone)} .pat.ink .eyebrow{color:var(--citron)}
+.pat.bone .blob path{fill:var(--emerald)} .pat.bone .in{color:var(--bone)} .pat.bone .eyebrow{color:var(--citron)}
+.pat.citron .blob path{fill:var(--ink)} .pat.citron .in{color:var(--bone)} .pat.citron .eyebrow{color:var(--citron)}
 """
 
 def rich(s):
@@ -131,7 +148,23 @@ def t_sign(color):
         return f'<section class="{cls}" id="sign"><div class="wrap"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><div class="mid"><div class="n">{plain(f.get("number"))}</div><h1 data-fit="330">{rich(f.get("headline"))}</h1><p class="p">{plain(f.get("text"))}</p></div><div class="by"><span class="mark">{MARK}</span><span class="count"{tagstyle}>{plain(f.get("tag","Swipe →"))}</span></div></div></section>'
     return fn
 
+
+import math as _m
+def _blob_path(w=960,h=1210,n=4.0,amp=.017,waves=15):
+    pts=[]
+    for k in range(420):
+        t=2*_m.pi*k/420
+        c,sn=_m.cos(t),_m.sin(t)
+        x=_m.copysign(abs(c)**(2/n),c); y=_m.copysign(abs(sn)**(2/n),sn)
+        r=1+amp*_m.sin(waves*t)
+        pts.append((w/2+(w/2-14)*x*r, h/2+(h/2-14)*y*r))
+    return "M"+" L".join("%.1f,%.1f"%p for p in pts)+" Z"
+def t_pat(color):
+    def fn(f):
+        return f'<section class="t pat {color}" id="pat"><div class="blob"><svg viewBox="0 0 960 1210" preserveAspectRatio="none"><path d="{_blob_path()}"/></svg></div><div class="in"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><h1 data-fit="760">{rich(f.get("headline"))}</h1><div class="sig">{MARK}</div></div></section>'
+    return fn
 TEMPLATES = {
+  "pat-plum": (t_pat("plum"), 1350), "pat-emerald": (t_pat("emerald"), 1350), "pat-ink": (t_pat("ink"), 1350), "pat-bone": (t_pat("bone"), 1350), "pat-citron": (t_pat("citron"), 1350),
   "cover": (t_cover, 1350), "body": (t_body, 1350),
   "quote-ink": (t_quote("ink"), 1350), "quote-plum": (t_quote("plum"), 1350),
   "quote-emerald": (t_quote("emerald"), 1350), "quote-bone": (t_quote("bone"), 1350),
