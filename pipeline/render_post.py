@@ -123,6 +123,17 @@ h1{font-family:var(--display);font-weight:800;letter-spacing:-.045em;line-height
 .mir.plum{background-color:var(--plum);color:var(--bone)}
 .mir.emerald{background-color:var(--emerald);color:var(--bone)}
 .mir.ink{background-color:var(--ink);color:var(--bone)}
+
+.pat{background:var(--ink)}
+.pat.bgdeep{background:var(--deep)}
+.pat::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(201,227,86,.30) 0 3px,transparent 3px 34px)}
+.pat.bgdeep::before{background:repeating-linear-gradient(135deg,rgba(239,237,227,.22) 0 3px,transparent 3px 34px)}
+.pat .blockx{position:absolute;left:60px;right:60px;top:90px;bottom:220px;display:flex;flex-direction:column;justify-content:space-between;padding:64px 68px 60px;border-top:14px solid var(--citron)}
+.pat .blockx.plum{background:var(--plum);color:var(--bone)} .pat .blockx.emerald{background:var(--emerald);color:var(--bone)} .pat .blockx.bone{background:var(--bone);color:var(--ink)} .pat .blockx.ink{background:var(--ink);color:var(--bone)}
+.pat .blockx.bone .serif,.pat .blockx.bone .dot{color:var(--plum)} .pat .blockx.bone .eyebrow{color:var(--emerald)}
+.pat .blockx h1{font-size:122px;line-height:.99}
+.pat .fx{position:absolute;left:60px;right:60px;bottom:72px;display:flex;justify-content:space-between;align-items:center}
+.pat .fx .count{color:var(--bone);opacity:.85}
 """
 
 def rich(s):
@@ -175,7 +186,14 @@ def t_mir(color):
     def fn(f):
         return f'<section class="t mir {color}" id="mir"><div class="in"><h1 data-fit="900">{rich(f.get("headline"))}</h1></div><div class="by"><span class="mark">{MARK}</span><span class="count">{plain(f.get("tag","Save this"))}</span></div></section>'
     return fn
+
+def t_pat(bg, block):
+    def fn(f):
+        cls = "t pat" + (" bgdeep" if bg=="deep" else "")
+        return f'<section class="{cls}" id="pat"><div class="blockx {block}"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><h1 data-fit="720">{rich(f.get("headline"))}</h1></div><div class="fx"><span class="mark">{MARK}</span><span class="count">{plain(f.get("tag","Save this"))}</span></div></section>'
+    return fn
 TEMPLATES = {
+  "line-plum": (t_pat("ink","plum"), 1350), "line-emerald": (t_pat("ink","emerald"), 1350), "line-bone": (t_pat("deep","bone"), 1350), "line-ink": (t_pat("deep","ink"), 1350),
   "period-plum": (t_period("plum"), 1350), "period-ink": (t_period("ink"), 1350), "period-emerald": (t_period("emerald"), 1350), "period-bone": (t_period("bone"), 1350),
   "cut-plum": (t_cut("plum"), 1350), "cut-emerald": (t_cut("emerald"), 1350), "cut-ink": (t_cut("ink"), 1350), "cut-bone": (t_cut("bone"), 1350),
   "mir-bone": (t_mir("bone"), 1350), "mir-citron": (t_mir("citron"), 1350), "mir-plum": (t_mir("plum"), 1350), "mir-emerald": (t_mir("emerald"), 1350), "mir-ink": (t_mir("ink"), 1350),
