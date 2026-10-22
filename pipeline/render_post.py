@@ -134,6 +134,26 @@ h1{font-family:var(--display);font-weight:800;letter-spacing:-.045em;line-height
 .pat .blockx h1{font-size:122px;line-height:.99}
 .pat .fx{position:absolute;left:60px;right:60px;bottom:72px;display:flex;justify-content:space-between;align-items:center}
 .pat .fx .count{color:var(--bone);opacity:.85}
+
+.shp{background:var(--ink)}
+.shp .bgp{position:absolute;inset:0}
+.shp .bx{position:absolute;left:70px;right:70px;top:50%;transform:translateY(-50%);padding:84px 80px}
+.shp .bx h1{font-size:112px;line-height:1.0}
+.shp .bx .eyebrow{margin-bottom:34px}
+.shp .bx.plum{background:var(--plum);color:var(--bone)} .shp .bx.emerald{background:var(--emerald);color:var(--bone)} .shp .bx.bone{background:var(--bone);color:var(--ink)} .shp .bx.ink{background:var(--ink);color:var(--bone)}
+.shp .bx.bone .serif,.shp .bx.bone .dot{color:var(--plum)} .shp .bx.bone .eyebrow{color:var(--emerald)}
+.shp .bx.slant{clip-path:polygon(0 0,100% 7%,100% 100%,0 93%);padding:120px 80px}
+.shp .bx.notch{clip-path:polygon(0 110px,110px 0,100% 0,100% calc(100% - 110px),calc(100% - 110px) 100%,0 100%)}
+.shp .bx.arrow{clip-path:polygon(0 0,calc(100% - 120px) 0,100% 50%,calc(100% - 120px) 100%,0 100%);padding-right:170px;right:40px}
+.shp .bx.steps{clip-path:polygon(0 0,72% 0,72% 14%,86% 14%,86% 28%,100% 28%,100% 100%,0 100%);padding-top:150px}
+.shp .bx.trap{clip-path:polygon(0 0,100% 0,92% 100%,8% 100%);padding:100px 140px}
+.shp .bx.back{overflow:visible;box-shadow:34px 34px 0 var(--citron)}
+.shp .bx.slabs{background:none!important;padding:0 10px}
+.shp .bx.slabs h1{line-height:1.3;font-size:104px}
+.shp .bx.slabs .hl{background:var(--plum);color:var(--bone);padding:.02em .22em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.shp .fx{position:absolute;left:70px;right:70px;bottom:70px;display:flex;justify-content:space-between;align-items:center}
+.shp .fx .mark,.shp .fx .count{background:var(--ink);padding:12px 18px;color:var(--bone)}
+.shp .fx .count{opacity:1;font-size:26px}
 """
 
 def rich(s):
@@ -192,7 +212,32 @@ def t_pat(bg, block):
         cls = "t pat" + (" bgdeep" if bg=="deep" else "")
         return f'<section class="{cls}" id="pat"><div class="blockx {block}"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><h1 data-fit="720">{rich(f.get("headline"))}</h1></div><div class="fx"><span class="mark">{MARK}</span><span class="count">{plain(f.get("tag","Save this"))}</span></div></section>'
     return fn
+
+def _svg(t): 
+    import urllib.parse
+    return "url('data:image/svg+xml;utf8," + urllib.parse.quote(t) + "')"
+SHP_BG = {
+ "bands-ink": "repeating-linear-gradient(135deg,#0E1411 0 46px,#0a2a1e 46px 92px)",
+ "chev-plum": "#7A2E52 " + _svg("<svg xmlns='http://www.w3.org/2000/svg' width='180' height='90'><path d='M0 60 L90 0 L180 60 L180 90 L90 30 L0 90Z' fill='#8d3a62'/></svg>"),
+ "grid-deep": "#02311F " + _svg("<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><path d='M0 0H120M0 0V120' stroke='#0a5a3b' stroke-width='5' fill='none'/></svg>"),
+ "dia-emerald": "#046B45 " + _svg("<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><path d='M60 6 L114 60 L60 114 L6 60Z' stroke='#02311F' stroke-width='6' fill='none'/></svg>"),
+ "bars-bone": "repeating-linear-gradient(90deg,#EFEDE3 0 70px,#e2dfcf 70px 140px)",
+ "bars-ink": "repeating-linear-gradient(90deg,#0E1411 0 64px,#0b3a28 64px 128px)",
+ "stripes-plum": "repeating-linear-gradient(0deg,#7A2E52 0 54px,#8d3a62 54px 108px)",
+}
+def t_shp(f):
+    bg = SHP_BG[f.get("bg","bands-ink")]
+    shape = f.get("shape","slant"); block = f.get("block","plum")
+    if shape == "slabs":
+        words = rich(f.get("headline"))
+        inner = f'<h1 data-fit="820"><span class="hl">{words}</span></h1>'
+        eb = f'<div class="eyebrow" style="background:var(--ink);display:inline-block;padding:10px 16px">{plain(f.get("eyebrow"))}</div>'
+        body = f'<div class="bx slabs">{eb}<div style="height:30px"></div>{inner}</div>'
+    else:
+        body = f'<div class="bx {block} {shape}"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><h1 data-fit="700">{rich(f.get("headline"))}</h1></div>'
+    return f'<section class="t shp" id="shp"><div class="bgp" style="background:{bg}"></div>{body}<div class="fx"><span class="mark">{MARK}</span><span class="count">{plain(f.get("tag","Save this"))}</span></div></section>'
 TEMPLATES = {
+  "shp": (t_shp, 1350),
   "line-plum": (t_pat("ink","plum"), 1350), "line-emerald": (t_pat("ink","emerald"), 1350), "line-bone": (t_pat("deep","bone"), 1350), "line-ink": (t_pat("deep","ink"), 1350),
   "period-plum": (t_period("plum"), 1350), "period-ink": (t_period("ink"), 1350), "period-emerald": (t_period("emerald"), 1350), "period-bone": (t_period("bone"), 1350),
   "cut-plum": (t_cut("plum"), 1350), "cut-emerald": (t_cut("emerald"), 1350), "cut-ink": (t_cut("ink"), 1350), "cut-bone": (t_cut("bone"), 1350),
