@@ -111,6 +111,18 @@ h1{font-family:var(--display);font-weight:800;letter-spacing:-.045em;line-height
 .blk.cut.bone .wrap h1,.blk.cut.bone .wrap .eyebrow{color:var(--ink)} .blk.cut.bone .serif,.blk.cut.bone .dot{color:var(--plum)} .blk.cut.bone .eyebrow{color:var(--emerald)}
 .blk.cut .wrap h1{margin-top:60px;max-width:900px}
 .blk.cut .by{margin-top:auto}
+.mir{background:var(--ink)}
+.mir::after{content:"";position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.035) 0 1px,transparent 1px 4px),repeating-linear-gradient(90deg,rgba(0,0,0,.05) 0 1px,transparent 1px 5px);pointer-events:none}
+.mir .in{position:absolute;left:96px;right:96px;top:150px;bottom:150px;display:flex;flex-direction:column;justify-content:center}
+.mir h1{font-size:122px;line-height:1.03;letter-spacing:-.04em;font-weight:700}
+.mir .by{position:absolute;left:96px;right:96px;bottom:70px;display:flex;justify-content:space-between;align-items:center}
+.mir .by .count{font-size:26px;font-weight:500;opacity:.8}
+.mir.bone .by .count,.mir.citron .by .count{color:var(--ink);opacity:.75}
+.mir.bone{background-color:var(--bone);color:var(--ink)} .mir.bone .serif,.mir.bone .dot{color:var(--plum)}
+.mir.citron{background-color:var(--citron);color:var(--ink)} .mir.citron .serif,.mir.citron .dot{color:var(--plum)}
+.mir.plum{background-color:var(--plum);color:var(--bone)}
+.mir.emerald{background-color:var(--emerald);color:var(--bone)}
+.mir.ink{background-color:var(--ink);color:var(--bone)}
 """
 
 def rich(s):
@@ -159,9 +171,14 @@ def t_cut(color):
     def fn(f):
         return f'<section class="t blk cut {color}" id="blk"><div class="a"></div><svg class="slash" viewBox="0 0 1080 1350"><line x1="-20" y1="1086" x2="1100" y2="778" stroke="#C9E356" stroke-width="16"/></svg><div class="wrap"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><h1 data-fit="560">{rich(f.get("headline"))}</h1><div class="by"><span class="mark">{MARK}</span><span class="count">{plain(f.get("tag","Save this"))}</span></div></div></section>'
     return fn
+def t_mir(color):
+    def fn(f):
+        return f'<section class="t mir {color}" id="mir"><div class="in"><h1 data-fit="900">{rich(f.get("headline"))}</h1></div><div class="by"><span class="mark">{MARK}</span><span class="count">{plain(f.get("tag","Save this"))}</span></div></section>'
+    return fn
 TEMPLATES = {
   "period-plum": (t_period("plum"), 1350), "period-ink": (t_period("ink"), 1350), "period-emerald": (t_period("emerald"), 1350), "period-bone": (t_period("bone"), 1350),
   "cut-plum": (t_cut("plum"), 1350), "cut-emerald": (t_cut("emerald"), 1350), "cut-ink": (t_cut("ink"), 1350), "cut-bone": (t_cut("bone"), 1350),
+  "mir-bone": (t_mir("bone"), 1350), "mir-citron": (t_mir("citron"), 1350), "mir-plum": (t_mir("plum"), 1350), "mir-emerald": (t_mir("emerald"), 1350), "mir-ink": (t_mir("ink"), 1350),
   "cover": (t_cover, 1350), "body": (t_body, 1350),
   "quote-ink": (t_quote("ink"), 1350), "quote-plum": (t_quote("plum"), 1350),
   "quote-emerald": (t_quote("emerald"), 1350), "quote-bone": (t_quote("bone"), 1350),
