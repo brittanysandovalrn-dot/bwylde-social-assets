@@ -154,6 +154,27 @@ h1{font-family:var(--display);font-weight:800;letter-spacing:-.045em;line-height
 .shp .fx{position:absolute;left:70px;right:70px;bottom:70px;display:flex;justify-content:space-between;align-items:center}
 .shp .fx .mark,.shp .fx .count{background:var(--ink);padding:12px 18px;color:var(--bone)}
 .shp .fx .count{opacity:1;font-size:26px}
+
+/* cover variants: same arrow-opener content, different color and composition so profile grids vary */
+.cv{background:var(--ink)}
+.cv.plum{background:var(--plum)} .cv.emerald{background:var(--emerald)} .cv.bone{background:var(--bone)} .cv.citron{background:var(--citron)}
+.cv.bone h1,.cv.citron h1{color:var(--ink)} .cv.bone .eyebrow{color:var(--emerald)} .cv.citron .eyebrow{color:var(--plum)}
+#cover.cv .card{background:var(--ink);color:var(--bone)} #cover.cv .card p{color:var(--bone)}
+.cv.bone .foot .count,.cv.citron .foot .count{color:var(--ink);opacity:.7} .cv.bone .foot .mark,.cv.citron .foot .mark{color:var(--ink)}
+.cv.bone .serif{color:var(--plum)} .cv.citron .serif{color:var(--plum)}
+.cv.citron .dot,.cv.bone .dot{color:var(--plum)}
+.cvs{background:var(--ink)}
+.cvs .field{position:absolute;left:0;right:0;top:0;height:930px;padding:100px 84px}
+.cvs.plum .field{background:var(--plum)} .cvs.emerald .field{background:var(--emerald)} .cvs.bone .field{background:var(--bone);color:var(--ink)} .cvs.citron .field{background:var(--citron);color:var(--ink)}
+.cvs .field h1{font-size:132px;margin-top:34px;line-height:.98}
+.cvs.bone .field h1,.cvs.citron .field h1{color:var(--ink)}
+.cvs.bone .eyebrow{color:var(--emerald)} .cvs.citron .eyebrow{color:var(--plum)}
+.cvs.bone .serif,.cvs.citron .serif,.cvs.bone .dot,.cvs.citron .dot{color:var(--plum)}
+.cvs .lower{position:absolute;left:84px;right:84px;top:990px;display:flex;flex-direction:column;gap:36px}
+.cvs .lower p{font-family:var(--display);font-weight:700;font-size:42px;letter-spacing:-.03em;line-height:1.2;color:var(--bone)}
+.cvs .lower .row{display:flex;justify-content:space-between;align-items:center}
+.cvs .brk{position:absolute;left:0;top:930px;width:100%;height:14px;background:var(--citron)}
+.cvs.citron .brk{background:var(--ink)}
 """
 
 def rich(s):
@@ -236,6 +257,15 @@ def t_shp(f):
     else:
         body = f'<div class="bx {block} {shape}"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><h1 data-fit="700">{rich(f.get("headline"))}</h1></div>'
     return f'<section class="t shp" id="shp"><div class="bgp" style="background:{bg}"></div>{body}<div class="fx"><span class="mark">{MARK}</span><span class="count">{plain(f.get("tag","Save this"))}</span></div></section>'
+
+def t_cover_c(color):
+    def fn(f):
+        return f'<section class="t cv {color}" id="cover"><div class="pad"><div class="eyebrow">{plain(f.get("eyebrow"))}</div></div><div class="stack"><h1 data-fit="380">{rich(f.get("headline"))}</h1></div><div class="card"><p>{plain(f.get("line"))}</p><span class="pill primary">{plain(f.get("cta","Swipe →"))}</span></div>{foot(f,"counter")}</section>'
+    return fn
+def t_cover_slab(color):
+    def fn(f):
+        return f'<section class="t cvs {color}" id="cover-slab"><div class="field"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><h1 data-fit="640">{rich(f.get("headline"))}</h1></div><div class="brk"></div><div class="lower"><p>{plain(f.get("line"))}</p><div class="row"><span class="pill primary">{plain(f.get("cta","Swipe →"))}</span><span class="mark">{MARK}</span></div></div></section>'
+    return fn
 TEMPLATES = {
   "shp": (t_shp, 1350),
   "line-plum": (t_pat("ink","plum"), 1350), "line-emerald": (t_pat("ink","emerald"), 1350), "line-bone": (t_pat("deep","bone"), 1350), "line-ink": (t_pat("deep","ink"), 1350),
@@ -243,6 +273,10 @@ TEMPLATES = {
   "cut-plum": (t_cut("plum"), 1350), "cut-emerald": (t_cut("emerald"), 1350), "cut-ink": (t_cut("ink"), 1350), "cut-bone": (t_cut("bone"), 1350),
   "mir-bone": (t_mir("bone"), 1350), "mir-citron": (t_mir("citron"), 1350), "mir-plum": (t_mir("plum"), 1350), "mir-emerald": (t_mir("emerald"), 1350), "mir-ink": (t_mir("ink"), 1350),
   "cover": (t_cover, 1350), "body": (t_body, 1350),
+  "cover-plum": (t_cover_c("plum"), 1350), "slab-plum": (t_cover_slab("plum"), 1350),
+  "cover-emerald": (t_cover_c("emerald"), 1350), "slab-emerald": (t_cover_slab("emerald"), 1350),
+  "cover-bone": (t_cover_c("bone"), 1350), "slab-bone": (t_cover_slab("bone"), 1350),
+  "cover-citron": (t_cover_c("citron"), 1350), "slab-citron": (t_cover_slab("citron"), 1350),
   "quote-ink": (t_quote("ink"), 1350), "quote-plum": (t_quote("plum"), 1350),
   "quote-emerald": (t_quote("emerald"), 1350), "quote-bone": (t_quote("bone"), 1350),
   "sign-ink": (t_sign("ink"), 1350), "sign-plum": (t_sign("plum"), 1350),
