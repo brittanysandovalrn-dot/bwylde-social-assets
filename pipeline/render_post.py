@@ -269,8 +269,6 @@ def t_cover_slab(color):
 TEMPLATES = {
   "shp": (t_shp, 1350),
   "line-plum": (t_pat("ink","plum"), 1350), "line-emerald": (t_pat("ink","emerald"), 1350), "line-bone": (t_pat("deep","bone"), 1350), "line-ink": (t_pat("deep","ink"), 1350),
-  "period-plum": (t_period("plum"), 1350), "period-ink": (t_period("ink"), 1350), "period-emerald": (t_period("emerald"), 1350), "period-bone": (t_period("bone"), 1350),
-  "cut-plum": (t_cut("plum"), 1350), "cut-emerald": (t_cut("emerald"), 1350), "cut-ink": (t_cut("ink"), 1350), "cut-bone": (t_cut("bone"), 1350),
   "mir-bone": (t_mir("bone"), 1350), "mir-citron": (t_mir("citron"), 1350), "mir-plum": (t_mir("plum"), 1350), "mir-emerald": (t_mir("emerald"), 1350), "mir-ink": (t_mir("ink"), 1350),
   "cover": (t_cover, 1350), "body": (t_body, 1350),
   "cover-plum": (t_cover_c("plum"), 1350), "slab-plum": (t_cover_slab("plum"), 1350),
@@ -308,6 +306,8 @@ def main():
         exe = find_chrome()
         b = p.chromium.launch(executable_path=exe, args=["--allow-file-access-from-files"]) if exe else p.chromium.launch(args=["--allow-file-access-from-files"])
         for i, s in enumerate(spec["slides"], 1):
+            if s["template"] not in TEMPLATES:
+                raise SystemExit(f"Slide {i}: template {s['template']!r} is retired or unknown (period-*, cut-* and pat-* were retired; use quote/sign/mir/shp/cover-*/slab-* templates)")
             fn, h = TEMPLATES[s["template"]]
             for bad in ("—", "–"):
                 for v in json.dumps(s.get("fields", {}), ensure_ascii=False).split('"'):
