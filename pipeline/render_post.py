@@ -175,6 +175,33 @@ h1{font-family:var(--display);font-weight:800;letter-spacing:-.045em;line-height
 .cvs .lower .row{display:flex;justify-content:space-between;align-items:center}
 .cvs .brk{position:absolute;left:0;top:930px;width:100%;height:14px;background:var(--citron)}
 .cvs.citron .brk{background:var(--ink)}
+/* ---- inspiration-round layouts: full-bleed type, whisper cards, story thread, paper grain ---- */
+.fb{background:var(--bone);color:var(--ink)}
+.fb.plum{background:var(--plum);color:var(--bone)} .fb.emerald{background:var(--emerald);color:var(--bone)} .fb.citron{background:var(--citron);color:var(--ink)} .fb.ink{background:var(--ink);color:var(--bone)}
+.fb .in{position:absolute;left:84px;right:84px;top:130px;bottom:130px;display:flex;flex-direction:column;justify-content:center}
+.fb h1{font-size:132px;line-height:1.04;letter-spacing:-.035em;font-weight:800;text-wrap:balance}
+.fb .serif{color:var(--citron)} .fb.bone .serif,.fb.citron .serif{color:var(--plum)}
+.fb .dot{color:var(--citron)} .fb.bone .dot,.fb.citron .dot{color:var(--plum)}
+.fb .by{position:absolute;left:70px;right:70px;bottom:64px;display:flex;justify-content:space-between;align-items:center}
+.fb .mark{font-size:30px} .fb .count{font-size:24px;letter-spacing:.06em;color:inherit;opacity:.75}
+.wh{background:var(--ink);color:var(--bone)}
+.wh.plum{background:var(--plum)} .wh.emerald{background:var(--emerald)} .wh.bone{background:var(--bone);color:var(--ink)} .wh.citron{background:var(--citron);color:var(--ink)}
+.wh .in{position:absolute;left:100px;right:150px;top:130px;bottom:130px;display:flex;flex-direction:column;justify-content:center}
+.wh h1{font-family:var(--serif);font-style:italic;font-weight:400;font-size:72px;line-height:1.28;letter-spacing:0;text-wrap:balance}
+.wh .serif{font-size:1em;color:var(--citron)} .wh.bone .serif,.wh.citron .serif{color:var(--plum)}
+.wh .dot{color:inherit}
+.wh .by{position:absolute;left:100px;right:100px;bottom:84px;display:flex;justify-content:space-between;align-items:center;font:500 22px var(--body);letter-spacing:.32em;text-transform:uppercase;opacity:.7}
+.th{background:var(--ink);color:var(--bone)}
+.th.plum{background:var(--plum)} .th.emerald{background:var(--emerald)} .th.bone{background:var(--bone);color:var(--ink)} .th.citron{background:var(--citron);color:var(--ink)}
+.th .in{position:absolute;left:90px;right:84px;top:130px;bottom:130px;display:flex;flex-direction:column;justify-content:center}
+.th h1{font-family:var(--display);font-weight:600;font-size:78px;line-height:1.24;letter-spacing:-.015em;text-wrap:pretty}
+.th .serif{color:var(--citron)} .th.bone .serif,.th.citron .serif{color:var(--plum)}
+.th .dot{color:inherit}
+.th .kicker{margin-top:46px;font-family:var(--display);font-weight:800;font-size:52px;line-height:1.14;letter-spacing:-.02em;text-wrap:balance;color:var(--citron)}
+.th.bone .kicker,.th.citron .kicker{color:var(--plum)}
+.th .by{position:absolute;left:90px;right:84px;bottom:70px;display:flex;justify-content:space-between;align-items:center}
+.th .mark{font-size:32px} .th .count{font-size:26px;color:inherit;opacity:.75;font-weight:500}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;mix-blend-mode:overlay;opacity:.5;background-image:@@G1@@,@@G2@@;background-size:300px 300px,900px 900px}
 """
 
 def rich(s):
@@ -266,7 +293,34 @@ def t_cover_slab(color):
     def fn(f):
         return f'<section class="t cvs {color}" id="cover-slab"><div class="field"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><h1 data-fit="640">{rich(f.get("headline"))}</h1></div><div class="brk"></div><div class="lower"><p>{plain(f.get("line"))}</p><div class="row"><span class="pill primary">{plain(f.get("cta","Swipe →"))}</span><span class="mark">{MARK}</span></div></div></section>'
     return fn
+
+import urllib.parse as _up
+_G1 = "<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 1.1 -.1'/></filter><rect width='300' height='300' filter='url(#n)'/></svg>"
+_G2 = "<svg xmlns='http://www.w3.org/2000/svg' width='900' height='900'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.035' numOctaves='4' seed='7'/><feColorMatrix values='0 0 0 0 .5  0 0 0 0 .5  0 0 0 0 .5  0 0 0 .7 -.1'/></filter><rect width='900' height='900' filter='url(#f)'/></svg>"
+def _grain_url(t): return "url(\"data:image/svg+xml;utf8," + _up.quote(t) + "\")"
+
+def _sz(f): return ' style="font-size:%spx"' % f["size"] if f.get("size") else ""
+def t_fb(color):
+    def fn(f):
+        return f'<section class="t fb {color}" id="fb"><div class="in"><h1 data-fit="1060"{_sz(f)}>{rich(f.get("headline"))}</h1></div><div class="by"><span class="mark">{MARK}</span><span class="count">{plain(f.get("tag",""))}</span></div></section>'
+    return fn
+def t_wh(color):
+    def fn(f):
+        return f'<section class="t wh {color}" id="wh"><div class="in"><h1 data-fit="720"{_sz(f)}>{rich(f.get("headline"))}</h1></div><div class="by"><span>b.wylde</span><span>{plain(f.get("tag",""))}</span></div></section>'
+    return fn
+def t_th(color):
+    def fn(f):
+        k = f.get("kicker")
+        kick = f'<div class="kicker">{rich(k)}</div>' if k else ""
+        fit = 760 if k else 920
+        return f'<section class="t th {color}" id="th"><div class="in"><h1 data-fit="{fit}"{_sz(f)}>{rich(f.get("headline"))}</h1>{kick}</div><div class="by"><span class="mark">{MARK}</span><span class="count">{plain(f.get("tag",""))}</span></div></section>'
+    return fn
 TEMPLATES = {
+  "full-plum": (t_fb("plum"), 1350), "whisper-plum": (t_wh("plum"), 1350), "thread-plum": (t_th("plum"), 1350),
+  "full-emerald": (t_fb("emerald"), 1350), "whisper-emerald": (t_wh("emerald"), 1350), "thread-emerald": (t_th("emerald"), 1350),
+  "full-bone": (t_fb("bone"), 1350), "whisper-bone": (t_wh("bone"), 1350), "thread-bone": (t_th("bone"), 1350),
+  "full-citron": (t_fb("citron"), 1350), "whisper-citron": (t_wh("citron"), 1350), "thread-citron": (t_th("citron"), 1350),
+  "full-ink": (t_fb("ink"), 1350), "whisper-ink": (t_wh("ink"), 1350), "thread-ink": (t_th("ink"), 1350),
   "shp": (t_shp, 1350),
   "line-plum": (t_pat("ink","plum"), 1350), "line-emerald": (t_pat("ink","emerald"), 1350), "line-bone": (t_pat("deep","bone"), 1350), "line-ink": (t_pat("deep","ink"), 1350),
   "mir-bone": (t_mir("bone"), 1350), "mir-citron": (t_mir("citron"), 1350), "mir-plum": (t_mir("plum"), 1350), "mir-emerald": (t_mir("emerald"), 1350), "mir-ink": (t_mir("ink"), 1350),
@@ -312,7 +366,10 @@ def main():
             for bad in ("—", "–"):
                 for v in json.dumps(s.get("fields", {}), ensure_ascii=False).split('"'):
                     if bad in v: raise SystemExit(f"Slide {i}: remove em/en dashes from copy: {v!r}")
-            page_html = f"<!doctype html><meta charset=utf-8><style>{CSS}</style>{fn(s.get('fields', {}))}"
+            body_html = fn(s.get('fields', {}))
+            if s.get('grain') or s.get('fields', {}).get('grain'):
+                body_html = body_html.replace('<section class="', '<section class="grain ', 1)
+            page_html = f"<!doctype html><meta charset=utf-8><style>{CSS.replace('@@G1@@', _grain_url(_G1)).replace('@@G2@@', _grain_url(_G2))}</style>{body_html}"
             hp = os.path.join(work, f"s{i}.html"); open(hp, "w").write(page_html)
             pg = b.new_page(viewport={"width": 1080, "height": h}, device_scale_factor=1)
             pg.goto(f"file://{hp}"); pg.wait_for_timeout(900); pg.evaluate("document.fonts.ready")
