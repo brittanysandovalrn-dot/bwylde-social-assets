@@ -1,0 +1,104 @@
+{
+ "slides": [
+  {
+   "template": "quote-emerald",
+   "fields": {
+    "eyebrow": "Sunday",
+    "headline": "I'm tired of life *lifing*. Not in crisis. Just tired.",
+    "tag": "Swipe →",
+    "feral": "Feel"
+   }
+  },
+  {
+   "template": "whisper-plum",
+   "grain": true,
+   "fields": {
+    "headline": "The kind of tired a nap doesn't touch. Too many fights with too many *systems*.",
+    "tag": "2/12"
+   }
+  },
+  {
+   "template": "whisper-bone",
+   "grain": true,
+   "fields": {
+    "headline": "My body's been loud lately, and when my body's loud, my mind *follows*.",
+    "tag": "3/12"
+   }
+  },
+  {
+   "template": "whisper-plum",
+   "grain": true,
+   "fields": {
+    "headline": "They were never separate. Stress shows up in my shoulders. Pain shows up in my *mood*.",
+    "tag": "4/12"
+   }
+  },
+  {
+   "template": "whisper-bone",
+   "grain": true,
+   "fields": {
+    "headline": "So today I'm not fixing anything. I'm letting myself *feel* it.",
+    "tag": "5/12"
+   }
+  },
+  {
+   "template": "whisper-plum",
+   "grain": true,
+   "fields": {
+    "headline": "Where it sits: heavy chest, tight jaw, a body that wants the *couch*.",
+    "tag": "6/12"
+   }
+  },
+  {
+   "template": "whisper-bone",
+   "grain": true,
+   "fields": {
+    "headline": "Naming it doesn't make it disappear. It just stops it from running the *show*.",
+    "tag": "7/12"
+   }
+  },
+  {
+   "template": "whisper-plum",
+   "grain": true,
+   "fields": {
+    "headline": "Tired isn't failing. Tired is information about how much you've been *carrying*.",
+    "tag": "8/12"
+   }
+  },
+  {
+   "template": "whisper-bone",
+   "grain": true,
+   "fields": {
+    "headline": "Sunday doesn't have to be a reset. It can just be a *rest*.",
+    "tag": "9/12"
+   }
+  },
+  {
+   "template": "whisper-plum",
+   "grain": true,
+   "fields": {
+    "headline": "You can be tired of life lifing and still be glad you're *here* for it.",
+    "tag": "10/12"
+   }
+  },
+  {
+   "template": "whisper-citron",
+   "grain": true,
+   "fields": {
+    "headline": "Send this to someone who's been running on *empty*.",
+    "tag": "11/12"
+   }
+  },
+  {
+   "template": "announce",
+   "grain": true,
+   "fields": {
+    "eyebrow": "Meet GoFeral",
+    "headline": "Start with *feel*.",
+    "text": "Before you fix, plan or push through, notice what you're actually feeling and where it lives in your body. There's an app for that.",
+    "strip": "Free to start. Link in bio.",
+    "button": "goferalapp.com"
+   }
+  }
+ ]
+}

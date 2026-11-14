@@ -1,0 +1,41 @@
+{
+ "slides": [
+  {
+   "template": "full-citron",
+   "fields": {
+    "headline": "This week was exhausting, and I still had a really good parenting week. Nobody *clapped*. I'm counting it anyway.",
+    "tag": "Swipe →",
+    "feral": "Live"
+   }
+  },
+  {
+   "template": "full-plum",
+   "fields": {
+    "headline": "The good stuff rarely makes noise. Showing up, listening, being *present* while running on empty.",
+    "tag": "2/5"
+   }
+  },
+  {
+   "template": "full-bone",
+   "fields": {
+    "headline": "Hard weeks have a way of erasing what went right. So I'm writing it *down*.",
+    "tag": "3/5"
+   }
+  },
+  {
+   "template": "full-ink",
+   "fields": {
+    "headline": "Being proud of yourself doesn't need an audience. It just needs you to *notice*.",
+    "tag": "4/5"
+   }
+  },
+  {
+   "template": "quote-card",
+   "fields": {
+    "eyebrow": "Your turn",
+    "headline": "What's one thing you did this week that nobody *clapped* for?",
+    "tag": "Comment below"
+   }
+  }
+ ]
+}
