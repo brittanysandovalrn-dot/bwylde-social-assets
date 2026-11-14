@@ -1,0 +1,103 @@
+{
+ "slides": [
+  {
+   "template": "shp",
+   "fields": {
+    "bg": "bands-ink",
+    "shape": "slant",
+    "block": "citron",
+    "eyebrow": "Caregiving",
+    "headline": "Someone I love is in a mental health crisis, and it keeps getting *harder*.",
+    "tag": "Swipe →",
+    "feral": "Release"
+   }
+  },
+  {
+   "template": "shp",
+   "fields": {
+    "bg": "chev-plum",
+    "shape": "slabs",
+    "block": "plum",
+    "eyebrow": "The quiet part",
+    "headline": "When you're holding someone up, you stop checking on *yourself*.",
+    "tag": "2/9"
+   }
+  },
+  {
+   "template": "shp",
+   "fields": {
+    "bg": "grid-deep",
+    "shape": "notch",
+    "block": "bone",
+    "eyebrow": "",
+    "headline": "You become the calm one, while your own body has been quietly *screaming* for weeks.",
+    "tag": "3/9"
+   }
+  },
+  {
+   "template": "shp",
+   "fields": {
+    "bg": "bars-bone",
+    "shape": "back",
+    "block": "plum",
+    "eyebrow": "",
+    "headline": "Losing track of me didn't make me better for them. It made me *shakier*.",
+    "tag": "4/9"
+   }
+  },
+  {
+   "template": "shp",
+   "fields": {
+    "bg": "stripes-plum",
+    "shape": "arrow",
+    "block": "bone",
+    "eyebrow": "",
+    "headline": "So before a hard room, I take a few minutes for me *first*.",
+    "tag": "5/9"
+   }
+  },
+  {
+   "template": "shp",
+   "fields": {
+    "bg": "dia-emerald",
+    "shape": "trap",
+    "block": "ink",
+    "eyebrow": "",
+    "headline": "I feel what's in my chest, and I look at it without *judging* it.",
+    "tag": "6/9"
+   }
+  },
+  {
+   "template": "shp",
+   "fields": {
+    "bg": "bars-ink",
+    "shape": "steps",
+    "block": "plum",
+    "eyebrow": "",
+    "headline": "Then I set down what isn't mine. I can't do their healing *for* them.",
+    "tag": "7/9"
+   }
+  },
+  {
+   "template": "shp",
+   "fields": {
+    "bg": "bars-bone",
+    "shape": "notch",
+    "block": "plum",
+    "eyebrow": "",
+    "headline": "Taking care of you isn't *selfish*. It's how you stay someone they can lean on.",
+    "tag": "8/9"
+   }
+  },
+  {
+   "template": "announce",
+   "fields": {
+    "eyebrow": "Meet GoFeral",
+    "headline": "Check in *first*.",
+    "text": "A few private minutes before the hard room: name what you're feeling, set down what isn't yours to carry, and walk in as yourself. There's an app for that.",
+    "strip": "Free to start. Link in bio.",
+    "button": "goferalapp.com"
+   }
+  }
+ ]
+}

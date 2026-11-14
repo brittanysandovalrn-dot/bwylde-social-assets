@@ -13,6 +13,29 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 CHROMES = [os.environ.get("CHROME_PATH",""), "/opt/google/chrome/chrome", "/opt/pw-browsers/chromium", "/usr/bin/chromium", "/usr/bin/google-chrome"]
 
 CSS = """
+/* opener backgrounds for card templates: fields.bg = plum | bone | citron */
+.on-bone .foot .mark .dot,.on-citron .foot .mark .dot,.on-bone .foot .dot,.on-citron .foot .dot{color:var(--plum)!important}
+.pat .blockx{justify-content:center!important}
+.pat .blockx .eyebrow{position:absolute;top:64px;left:68px}
+#list .wrap{justify-content:center}
+#define .wrap{justify-content:center} #define .ex{margin-top:80px!important}
+.shp .bx.citron{background:var(--citron);color:var(--ink)} .shp .bx.citron .serif,.shp .bx.citron .dot{color:var(--plum)} .shp .bx.citron .eyebrow{color:var(--emerald)}
+
+/* FERAL step strip: fields.feral = Feel|Examine|Release|Align|Live */
+.feral{position:absolute;top:30px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:10px;z-index:20;font-family:var(--display)}
+.feral .lab{font-weight:800;font-size:22px;letter-spacing:.14em;padding:12px 18px;border-radius:999px;background:rgba(14,20,17,.88);color:var(--citron)}
+.feral .s{width:46px;height:46px;border-radius:999px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:24px;background:rgba(14,20,17,.88);color:var(--bone)}
+.feral .s.on{width:auto;padding:0 20px;background:var(--citron);color:var(--ink);font-size:22px;letter-spacing:.04em}
+.on-plum .box.m{background:var(--ink)!important}
+.on-plum{background:var(--plum)!important}
+.on-bone{background:var(--bone)!important}
+.on-citron{background:var(--citron)!important}
+.on-bone>.wrap>h1,.on-citron>.wrap>h1,.on-bone>.pad h1,.on-citron>.pad h1,.on-bone #x,.on-bone>.wrap>.p,.on-citron>.wrap>.p,.on-bone .foot .mark,.on-citron .foot .mark,.on-bone .foot .count,.on-citron .foot .count{color:var(--ink)!important;opacity:1}
+.on-bone>.wrap>.eyebrow,.on-citron>.wrap>.eyebrow,.on-bone>.pad .eyebrow,.on-citron>.pad .eyebrow,.on-bone>.wrap>.pos,.on-citron>.wrap>.pos{color:var(--plum)!important}
+.on-bone>.wrap>h1 .serif,.on-citron>.wrap>h1 .serif,.on-bone>.pad h1 .serif,.on-citron>.pad h1 .serif,.on-bone>.wrap>h1 .dot,.on-citron>.wrap>h1 .dot,.on-bone>.pad h1 .dot,.on-citron>.pad h1 .dot{color:var(--plum)!important}
+.on-plum>.wrap>.ex,.on-plum>.wrap>.p{color:var(--bone)}
+.on-bone>.wrap>.ex,.on-citron>.wrap>.ex{color:var(--ink);border-color:var(--plum)}
+
 @font-face{font-family:"Bricolage Grotesque";src:url("fonts/BricolageGrotesque.ttf");font-weight:200 800}
 @font-face{font-family:"Space Grotesk";src:url("fonts/SpaceGrotesk.ttf");font-weight:300 700}
 @font-face{font-family:"Instrument Serif";src:url("fonts/InstrumentSerif-Italic.ttf");font-style:italic}
@@ -215,7 +238,7 @@ MARK = 'b<span class="dot">.</span>wylde'
 def foot(f, k="tag"): return f'<div class="foot"><span class="mark">{MARK}</span><span class="count">{plain(f.get(k,""))}</span></div>'
 
 def t_cover(f): return f'<section class="t" id="cover"><div class="pad"><div class="eyebrow">{plain(f.get("eyebrow"))}</div></div><div class="stack"><h1 data-fit="380">{rich(f.get("headline"))}</h1></div><div class="card"><p>{plain(f.get("line"))}</p><span class="pill primary">{plain(f.get("cta","Swipe →"))}</span></div>{foot(f,"counter")}</section>'
-def t_body(f): return f'<section class="t" id="body"><div class="pad"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><h1 style="margin-top:26px" data-fit="250">{rich(f.get("headline"))}</h1></div><div class="card"><span class="num">{plain(f.get("number"))}</span><p class="h3">{plain(f.get("title"))}</p><p class="p">{plain(f.get("text"))}</p></div>{foot(f,"counter")}</section>'
+def t_body(f): return f'<section class="t{(" on-"+f["bg"]) if f.get("bg") else ""}" id="body"><div class="pad"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><h1 style="margin-top:26px" data-fit="250">{rich(f.get("headline"))}</h1></div><div class="card"><span class="num">{plain(f.get("number"))}</span><p class="h3">{plain(f.get("title"))}</p><p class="p">{plain(f.get("text"))}</p></div>{foot(f,"counter")}</section>'
 def t_quote(color):
     def fn(f):
         cls = "t q " + color if color != "ink" else "t q"
@@ -228,8 +251,8 @@ def t_story(f):
     chips = "".join('<span class="chip%s">%s</span>' % (" on" if i == 0 else "", plain(c)) for i, c in enumerate(f.get("chips", [])))
     return f'<section class="t story" id="story"><div class="stack"><div class="eyebrow">{plain(f.get("eyebrow"))}</div><h1 style="margin-top:28px" data-fit="560">{rich(f.get("headline"))}</h1><div class="chips">{chips}</div></div><div class="card"><p>{plain(f.get("text"))}</p></div><div class="safe"><span class="mark">{MARK}</span></div></section>'
 def t_stat(f): return f'<section class="t i deep" id="stat"><div class="wrap"><div class="eyebrow">{plain(f.get("eyebrow","Did you know"))}</div><div class="num">{plain(f.get("number"))}</div><p class="p">{plain(f.get("text"))}</p><div class="src">{plain(f.get("source"))}</div></div>{foot(f)}</section>'
-def t_define(f): return f'<section class="t i" id="define"><div class="wrap"><div class="eyebrow">{plain(f.get("eyebrow","Word of the day"))}</div><h1>{rich(f.get("term"))}</h1><div class="pos">{plain(f.get("pos"))}</div><p class="p">{plain(f.get("text"))}</p><div class="ex">{plain(f.get("example"))}</div></div>{foot(f)}</section>'
-def t_myth(f): return f'<section class="t i" id="myth"><div class="wrap"><div class="box m"><div class="tag">Myth</div><h2 data-fit="330">{rich(f.get("myth"))}</h2></div><div class="box r"><div class="tag">Reality</div><h2 data-fit="330">{rich(f.get("reality"))}</h2></div></div>{foot(f)}</section>'
+def t_define(f): return f'<section class="t i{(" on-"+f["bg"]) if f.get("bg") else ""}" id="define"><div class="wrap"><div class="eyebrow">{plain(f.get("eyebrow","Word of the day"))}</div><h1>{rich(f.get("term"))}</h1><div class="pos">{plain(f.get("pos"))}</div><p class="p">{plain(f.get("text"))}</p><div class="ex">{plain(f.get("example"))}</div></div>{foot(f)}</section>'
+def t_myth(f): return f'<section class="t i{(" on-"+f["bg"]) if f.get("bg") else ""}" id="myth"><div class="wrap"><div class="box m"><div class="tag">Myth</div><h2 data-fit="330">{rich(f.get("myth"))}</h2></div><div class="box r"><div class="tag">Reality</div><h2 data-fit="330">{rich(f.get("reality"))}</h2></div></div>{foot(f)}</section>'
 def t_list(f):
     rows = "".join(f'<div class="row"><span class="n">{i+1}</span><span class="t2">{plain(x)}</span></div>' for i, x in enumerate(f.get("items", [])[:3]))
     return f'<section class="t i" id="list"><div class="wrap"><div class="eyebrow">{plain(f.get("eyebrow","Three things"))}</div><h1 data-fit="300">{rich(f.get("headline"))}</h1><div class="rows">{rows}</div></div>{foot(f)}</section>'
@@ -349,6 +372,12 @@ def find_chrome():
         if c and os.path.exists(c): return c
     return None
 
+def feral_strip(step):
+    out = ['<div class="feral"><span class="lab">FERAL™</span>']
+    for w in ["Feel", "Examine", "Release", "Align", "Live"]:
+        out.append(f'<span class="s on">{w[0]} · {w}</span>' if w == step else f'<span class="s">{w[0]}</span>')
+    return "".join(out) + "</div>"
+
 def main():
     from playwright.sync_api import sync_playwright
     from PIL import Image
@@ -367,6 +396,9 @@ def main():
                 for v in json.dumps(s.get("fields", {}), ensure_ascii=False).split('"'):
                     if bad in v: raise SystemExit(f"Slide {i}: remove em/en dashes from copy: {v!r}")
             body_html = fn(s.get('fields', {}))
+            if s.get('fields', {}).get('feral'):
+                _cut = body_html.rfind('</section>')
+                body_html = body_html[:_cut] + feral_strip(s['fields']['feral']) + body_html[_cut:]
             if s.get('grain') or s.get('fields', {}).get('grain'):
                 body_html = body_html.replace('<section class="', '<section class="grain ', 1)
             page_html = f"<!doctype html><meta charset=utf-8><style>{CSS.replace('@@G1@@', _grain_url(_G1)).replace('@@G2@@', _grain_url(_G2))}</style>{body_html}"

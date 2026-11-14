@@ -1,0 +1,77 @@
+{
+ "slides": [
+  {
+   "template": "mir-bone",
+   "fields": {
+    "headline": "I pick at my skin when life gets *loud*, and I've been doing it a lot this week.",
+    "tag": "Swipe →",
+    "feral": "Examine"
+   }
+  },
+  {
+   "template": "mir-citron",
+   "fields": {
+    "headline": "I can explain my compulsions better than most textbooks. Knowing all of it still hasn't made my hands *stop*.",
+    "tag": "Swipe →"
+   }
+  },
+  {
+   "template": "mir-plum",
+   "fields": {
+    "headline": "Every compulsion is trying to get rid of a feeling. The relief is real, and it leaves almost as fast as it *came*.",
+    "tag": "Swipe →"
+   }
+  },
+  {
+   "template": "mir-ink",
+   "fields": {
+    "headline": "Then the shame shows up, and shame is exactly the kind of feeling that sends me right *back* to it.",
+    "tag": "Swipe →"
+   }
+  },
+  {
+   "template": "mir-bone",
+   "fields": {
+    "headline": "So I'm done yelling at myself to stop. I'm getting curious about what I'm trying to *escape* instead.",
+    "tag": "Swipe →"
+   }
+  },
+  {
+   "template": "mir-citron",
+   "fields": {
+    "headline": "Under the picking there's usually an old belief, like I have to fix this right now or *something* bad happens.",
+    "tag": "Swipe →"
+   }
+  },
+  {
+   "template": "mir-plum",
+   "fields": {
+    "headline": "I'm not broken for doing this. I'm a person whose brain built a way to *cope*.",
+    "tag": "Share to your story or send it on"
+   }
+  },
+  {
+   "template": "list",
+   "fields": {
+    "eyebrow": "Try this in 60 seconds",
+    "headline": "Catch it *kindly*.",
+    "items": [
+     "Notice your hands. No scolding.",
+     "Name the feeling underneath in one word.",
+     "Tell yourself: it makes sense, and I can wait one breath."
+    ],
+    "tag": "No app needed"
+   }
+  },
+  {
+   "template": "announce",
+   "fields": {
+    "eyebrow": "Meet GoFeral",
+    "headline": "Get *under* the urge.",
+    "text": "Notice when the urge shows up, name the feeling and belief underneath it, and practice meeting yourself without shame. Alongside treatment, never instead of it. There's an app for that.",
+    "strip": "Free to start. Link in bio.",
+    "button": "goferalapp.com"
+   }
+  }
+ ]
+}

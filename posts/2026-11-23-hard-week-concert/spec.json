@@ -1,0 +1,53 @@
+{
+ "slides": [
+  {
+   "template": "line-plum",
+   "fields": {
+    "eyebrow": "This week",
+    "headline": "This week was a lot, and a 24-hour trip with my kid is what brought me back to *myself*.",
+    "tag": "1/6",
+    "feral": "Live"
+   }
+  },
+  {
+   "template": "line-ink",
+   "fields": {
+    "eyebrow": "The heavy part",
+    "headline": "Navigating the separation, fighting with insurance and my own stuff coming up hard. Grown-up life was pulling me in every *direction*.",
+    "tag": "2/6"
+   }
+  },
+  {
+   "template": "line-bone",
+   "fields": {
+    "eyebrow": "The trip",
+    "headline": "Then twenty-four hours with my kid. Car jokes, a concert, zero agenda, just *being* together.",
+    "tag": "3/6"
+   }
+  },
+  {
+   "template": "line-emerald",
+   "fields": {
+    "eyebrow": "Both of us",
+    "headline": "Singing next to my kid, my younger self showed up too. The version of me who still remembers how to *play*.",
+    "tag": "4/6"
+   }
+  },
+  {
+   "template": "line-plum",
+   "fields": {
+    "eyebrow": "Both true",
+    "headline": "The hard week didn't disappear. Joy just got a seat at the table *too*.",
+    "tag": "5/6"
+   }
+  },
+  {
+   "template": "quote-card",
+   "fields": {
+    "eyebrow": "Your turn",
+    "headline": "What brought you back to yourself this week? Even something small *counts*.",
+    "tag": "Comment below"
+   }
+  }
+ ]
+}

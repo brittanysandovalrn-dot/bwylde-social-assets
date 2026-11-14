@@ -1,0 +1,62 @@
+{
+ "slides": [
+  {
+   "template": "myth",
+   "fields": {
+    "bg": "plum",
+    "myth": "Doing it all alone is just who I *am*.",
+    "reality": "It's how I learned to stay safe. I'm grateful for it, and here's what it got wrong. Swipe →",
+    "tag": "1/7",
+    "feral": "Examine"
+   }
+  },
+  {
+   "template": "myth",
+   "fields": {
+    "myth": "If I need people, I'm *weak*.",
+    "reality": "Doing it all alone is a skill I built to stay safe. Letting the right people in takes even more strength.",
+    "tag": "2/7"
+   }
+  },
+  {
+   "template": "myth",
+   "fields": {
+    "myth": "If I ask, I'll get *hurt*.",
+    "reality": "Sometimes you will, and that hurt is real. It tells you who's safe. It isn't proof you should never ask.",
+    "tag": "3/7"
+   }
+  },
+  {
+   "template": "myth",
+   "fields": {
+    "myth": "Going it alone keeps everyone *safe*.",
+    "reality": "Mostly it protects the old wound. The part of me that wants connection just stays hungry.",
+    "tag": "4/7"
+   }
+  },
+  {
+   "template": "myth",
+   "fields": {
+    "myth": "I'll ask once it's *really* bad.",
+    "reality": "By then I'm too deep to reach out. Asking while it's hard but not on fire is what actually works.",
+    "tag": "5/7"
+   }
+  },
+  {
+   "template": "myth",
+   "fields": {
+    "myth": "If I'm grateful for it, I can't *change* it.",
+    "reality": "I can thank my independence for keeping me safe and still let it loosen. This week I asked for support, and the right people showed up.",
+    "tag": "6/7"
+   }
+  },
+  {
+   "template": "quote-card",
+   "fields": {
+    "eyebrow": "Your turn",
+    "headline": "Name one thing you need this week. Saying it *anywhere* counts, even here.",
+    "tag": "Comment below"
+   }
+  }
+ ]
+}

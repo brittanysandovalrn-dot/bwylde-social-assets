@@ -1,0 +1,90 @@
+{
+ "slides": [
+  {
+   "template": "body",
+   "fields": {
+    "bg": "citron",
+    "eyebrow": "Flare season",
+    "headline": "Winter's here, and my body *knows*.",
+    "number": "→",
+    "title": "For anyone living with chronic pain",
+    "text": "How I'm learning to stop fighting a war on two fronts when my body gets loud in the cold. Swipe through.",
+    "counter": "1/8",
+    "feral": "Release"
+   }
+  },
+  {
+   "template": "body",
+   "fields": {
+    "eyebrow": "Flare season",
+    "headline": "The *first* fight.",
+    "number": "01",
+    "title": "The pain itself",
+    "text": "For a lot of us, the cold months bring flares, new limits and more hard days. I can't control that part, and pretending I can wears me out.",
+    "counter": "2/8"
+   }
+  },
+  {
+   "template": "body",
+   "fields": {
+    "eyebrow": "Flare season",
+    "headline": "The *second* fight.",
+    "number": "02",
+    "title": "Fighting my body",
+    "text": "Pushing harder, getting furious, treating my body like it's betraying me. The bracing and panic pile right back on top of the pain.",
+    "counter": "3/8"
+   }
+  },
+  {
+   "template": "body",
+   "fields": {
+    "eyebrow": "Flare season",
+    "headline": "Drop *one* fight.",
+    "number": "03",
+    "title": "Accept what's here",
+    "text": "Accepting it isn't giving up. Some days it sounds like: this hurts, I'm scared, and I'm still here with myself.",
+    "counter": "4/8"
+   }
+  },
+  {
+   "template": "body",
+   "fields": {
+    "eyebrow": "Flare season",
+    "headline": "Skip the *shame*.",
+    "number": "04",
+    "title": "Rest without guilt",
+    "text": "Rest isn't quitting. Canceling isn't failing. Going slower is still going. I can't control the flare, but I can stop stacking shame on top of it.",
+    "counter": "5/8"
+   }
+  },
+  {
+   "template": "body",
+   "fields": {
+    "eyebrow": "Flare season",
+    "headline": "Live *here*.",
+    "number": "05",
+    "title": "Treat it like home",
+    "text": "My body isn't the enemy. It's the place I live, even on the days it's loud.",
+    "counter": "6/8"
+   }
+  },
+  {
+   "template": "quote-card",
+   "fields": {
+    "eyebrow": "Permission",
+    "headline": "If your body's loud this season, you're allowed to be *gentle* with it anyway.",
+    "tag": "Send to someone"
+   }
+  },
+  {
+   "template": "announce",
+   "fields": {
+    "eyebrow": "Meet GoFeral",
+    "headline": "Stop fighting on *two* fronts.",
+    "text": "Notice what your body's doing, set down the fight you can't win, and stay with yourself on the loud days. It won't fix pain. It helps you stop adding to it. There's an app for that.",
+    "strip": "Free to start. Link in bio.",
+    "button": "goferalapp.com"
+   }
+  }
+ ]
+}

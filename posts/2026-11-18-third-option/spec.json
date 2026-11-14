@@ -1,0 +1,83 @@
+{
+ "slides": [
+  {
+   "template": "sign-plum",
+   "fields": {
+    "eyebrow": "Holiday plans",
+    "number": "",
+    "headline": "Bowing out, pushing through, and the *third* option nobody taught us.",
+    "text": "What I did this week when the invites rolled in and my body said absolutely not. Swipe for the option I'd never tried.",
+    "tag": "Swipe →",
+    "feral": "Release"
+   }
+  },
+  {
+   "template": "sign-ink",
+   "fields": {
+    "eyebrow": "Sign",
+    "number": "1",
+    "headline": "The old *move*: disappear.",
+    "text": "Pain's up, anxiety's up, and everyone's making holiday plans. The old me would've said I'm not going to anything and let the pain take the blame. It's a clean exit, and it's lonely as hell.",
+    "tag": "Swipe →"
+   }
+  },
+  {
+   "template": "sign-plum",
+   "fields": {
+    "eyebrow": "Sign",
+    "number": "2",
+    "headline": "The other move: *push* through.",
+    "text": "Say yes to everything, smile through it and pay for it for a week after. It looks like strength from the outside. From the inside it feels a lot like abandoning yourself.",
+    "tag": "Swipe →"
+   }
+  },
+  {
+   "template": "sign-bone",
+   "fields": {
+    "eyebrow": "Sign",
+    "number": "3",
+    "headline": "Notice the *pull* first.",
+    "text": "This time I caught the urge to run before I acted on it. I felt where it lived in my body and didn't argue with it. That one pause changed everything after it.",
+    "tag": "Swipe →"
+   }
+  },
+  {
+   "template": "sign-plum",
+   "fields": {
+    "eyebrow": "Sign",
+    "number": "4",
+    "headline": "Then say it *out loud*.",
+    "text": "Instead of hiding or performing, I told people the truth: I'm struggling right now. No speech, no list of reasons. Just the honest thing, said plainly.",
+    "tag": "Swipe →"
+   }
+  },
+  {
+   "template": "sign-ink",
+   "fields": {
+    "eyebrow": "Sign",
+    "number": "5",
+    "headline": "Let the right people *meet* you.",
+    "text": "Not everyone will get it, and that's information too. The right people met me with understanding, and I'm still going. This time my needs come with me, out loud.",
+    "tag": "Swipe →"
+   }
+  },
+  {
+   "template": "quote-card",
+   "fields": {
+    "eyebrow": "Permission",
+    "headline": "You don't have to pick between hiding and *pretending*.",
+    "tag": "Save this"
+   }
+  },
+  {
+   "template": "announce",
+   "fields": {
+    "eyebrow": "Meet GoFeral",
+    "headline": "Find the *third* option.",
+    "text": "Catch the urge to bail or push through, name what you actually need, and practice saying it before the plans get made. There's an app for that.",
+    "strip": "Free to start. Link in bio.",
+    "button": "goferalapp.com"
+   }
+  }
+ ]
+}

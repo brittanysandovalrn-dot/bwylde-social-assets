@@ -1,0 +1,64 @@
+{
+ "slides": [
+  {
+   "template": "define",
+   "fields": {
+    "bg": "plum",
+    "eyebrow": "New traditions",
+    "term": "Tradition",
+    "pos": "noun",
+    "text": "Something you choose to do on purpose until it feels like yours. It doesn't need the same people, the same table or the same menu.",
+    "example": "For anyone facing a first holiday after a separation, or missing someone at the table. Swipe →",
+    "tag": "1/5",
+    "feral": "Align"
+   }
+  },
+  {
+   "template": "list",
+   "fields": {
+    "eyebrow": "First, the hard part",
+    "headline": "Let the *grief* in.",
+    "items": [
+     "The empty chairs are loud. That's love with nowhere to go.",
+     "Dreading a day you used to love doesn't mean you're doing it wrong.",
+     "Letting old traditions rest isn't erasing them."
+    ],
+    "tag": "2/5"
+   }
+  },
+  {
+   "template": "list",
+   "fields": {
+    "eyebrow": "Then, the new part",
+    "headline": "Try something *new*.",
+    "items": [
+     "Breakfast for dinner.",
+     "A movie marathon in pajamas.",
+     "A long drive with the good playlist."
+    ],
+    "tag": "3/5"
+   }
+  },
+  {
+   "template": "list",
+   "fields": {
+    "eyebrow": "Then, the big part",
+    "headline": "Make comfort *portable*.",
+    "items": [
+     "A ritual that's just yours, like a walk or a candle.",
+     "A playlist that feels like being held.",
+     "Talking to yourself the way you'd talk to a friend."
+    ],
+    "tag": "4/5"
+   }
+  },
+  {
+   "template": "quote-card",
+   "fields": {
+    "eyebrow": "Your turn",
+    "headline": "What's one new tradition you're trying this year? Ideas to share are *welcome*.",
+    "tag": "Comment below"
+   }
+  }
+ ]
+}
