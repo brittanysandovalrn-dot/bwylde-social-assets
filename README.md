@@ -36,6 +36,16 @@ Rich text: `*word*` becomes the Citron serif italic word. A final `.` or `?` bec
 ## Public image URL
 `https://raw.githubusercontent.com/brittanysandovalrn-dot/bwylde-social-assets/main/posts/<folder>/slide-N.jpg`
 
+## Video-slide carousels
+Any rendered carousel can post as a **video-slide carousel**: each flat card becomes its own silent 3-second MP4 (no motion, no animation), posted as an Instagram carousel so it still swipes at the viewer's pace but Instagram labels it as video. Reels tend to out-reach flat image carousels, and this borrows that lift without an auto-advancing slideshow.
+
+    python3 pipeline/make_video_slides.py posts/2026-11-19-caregiver
+
+Writes `posts/<folder>/video/slide-N.mp4` (1080x1350, 4:5, one per slide, same order). Public URL:
+`https://raw.githubusercontent.com/brittanysandovalrn-dot/bwylde-social-assets/main/posts/<folder>/video/slide-N.mp4`
+
+Scheduling: identical to an image carousel, but pass the `video/slide-N.mp4` URLs as the media. Metricool accepts video carousels (4:5, under 60s per clip) and re-hosts them. Keep slide 1 a still card (the grid rule still applies). Audio stays off: baked-in music restarts on every swipe and breaks the Repurpose.io cross-post. Tag the Airtable row Format = "Video-slide carousel" so the mix is tracked.
+
 ## Carousel formats
 - **Explainer** (wordier, deeper): `cover` opener with an arrow (eyebrow, headline, line, cta "Swipe →", counter), 5 numbered `sign-*` slides that walk one idea step by step (2 to 3 sentences each), `quote-card` closer, `announce` GoFeral slide.
 - **Signs list**: `cover` opener with an arrow ("Things that feel like X but are actually signs Y:"), 5 numbered `sign-*` slides, `quote-card` closer, `announce` GoFeral slide.
